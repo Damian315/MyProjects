@@ -18,8 +18,8 @@ public abstract class BaseSeleniumTest {
 
     @Before
     public void setUp(){
-        String driverPath = "untitled/src/main/resources/executables/drivers/chromedriver";
-        System.setProperty("webdriver.chrome.driver", "untitled/src/test/resources/executables/drivers/chromedriver");
+        String driverPath = "src/main/resources/executables/drivers/chromedriver";
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/executables/drivers/chromedriver");
         System.setProperty("webdriver.chrome.driver", driverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");

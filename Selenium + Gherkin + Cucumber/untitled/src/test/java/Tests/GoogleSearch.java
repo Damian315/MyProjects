@@ -24,16 +24,7 @@ public class GoogleSearch extends BaseSeleniumTest {
 
     @Given("an open browser with google.com")
     public void googleSearch(){
-        String driverPath = "src/main/resources/executables/drivers/chromedriver";
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/executables/drivers/chromedriver");
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        //driver = new ChromeDriver(options);
-        driver = new ChromeDriver();
-        js = (JavascriptExecutor) driver;
-        vars = new HashMap<String, Object>();
-        driver.manage().window().maximize();
+        setUp();
         driver.get("https://www.google.com/");
     }
     @When("a keyword (.*) in entered in input filed")
