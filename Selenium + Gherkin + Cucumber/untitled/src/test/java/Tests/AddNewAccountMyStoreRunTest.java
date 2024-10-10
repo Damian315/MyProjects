@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/Cucumber/Features",
-        plugin = {"pretty", "html:out"}
-
+        plugin = {"pretty", "html:out"},
+        tags = "@CreateNewAccountMyStore"
 )
 
 public class AddNewAccountMyStoreRunTest {

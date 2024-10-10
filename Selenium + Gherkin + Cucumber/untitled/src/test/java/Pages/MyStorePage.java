@@ -17,8 +17,16 @@ public class MyStorePage extends BaseSeleniumTest {
     @FindBy(xpath = "//div[@class='user-info']//a")
     WebElement inputSignIn;
 
+    @FindBy(xpath = "//div[@class='no-account']/a")
+    WebElement inputCreateNew;
+
     public void enterInputSignIn(){
         waitUntilElementToBeVisible(By.xpath("//div[@class='user-info']//a"));
         inputSignIn.click();
+    }
+
+    public void enterInputCreateNewAccount(){
+     waitUntilElementToBeVisible(By.xpath("//div[@class='no-account']/a"));
+     inputCreateNew.click();
     }
 }
