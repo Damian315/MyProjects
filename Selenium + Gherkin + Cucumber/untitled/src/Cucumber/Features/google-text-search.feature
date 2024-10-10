@@ -1,3 +1,4 @@
+@GoogleSearch
 Feature: Google search
 
   Scenario: user can search any keyword
