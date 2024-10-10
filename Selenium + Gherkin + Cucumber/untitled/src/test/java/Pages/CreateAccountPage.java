@@ -9,6 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Random;
+
 public class CreateAccountPage extends BaseSeleniumTest {
 
     public CreateAccountPage(WebDriver driver){
@@ -34,24 +36,32 @@ public class CreateAccountPage extends BaseSeleniumTest {
     @FindBy(xpath = "//input[@id='field-birthday']")
     WebElement inputBirthdate;
 
-    @FindBy(xpath = "//input[@id='psgdpr']")
+    @FindBy(xpath = "//input[@name='psgdpr']")
     WebElement inputPrivacyPolicy;
+
+    @FindBy(xpath = "//input[@name='customer_privacy']")
+    WebElement inputCustomerPrivacy;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement buttonSave;
 
     public void completedForm(){
         waitUntilElementToBeVisible(By.xpath("//input[@id='field-id_gender-1']"));
         inputGender.click();
         inputFirstName.sendKeys("Jan");
         inputLastName.sendKeys("Kowalski");
-        inputEmail.sendKeys("test@wp.pl");
-        inputPassword.sendKeys("test");
-        inputBirthdate.sendKeys("01.04.1990");
+        Random number = new Random();
+        int random = number.nextInt(101);
+        inputEmail.sendKeys("test" + random + "@wp.pl");
+        inputPassword.sendKeys("passpass");
+        inputBirthdate.sendKeys("05/31/1990");
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(0,250)");
-        //Actions action = new Actions(driver);
-        //action.moveToElement(inputPrivacyPolicy).click().perform();
-        //js.executeScript("arguments[0].scrollIntoView();", inputPrivacyPolicy);
         inputPrivacyPolicy.click();
-
+        inputCustomerPrivacy.click();
     }
 
+    public void saveNewAccount(){
+        buttonSave.click();
+    }
 }

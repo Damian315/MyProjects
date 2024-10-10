@@ -7,4 +7,5 @@ Feature: Create new account MyStore
     When User goes to create new account
     And User completes form
     And User save new account
-    Then User sees "Information successfully updated."
+    Then Enter save sees logged user
+    And close browser

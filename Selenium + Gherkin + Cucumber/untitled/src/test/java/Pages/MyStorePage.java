@@ -20,6 +20,9 @@ public class MyStorePage extends BaseSeleniumTest {
     @FindBy(xpath = "//div[@class='no-account']/a")
     WebElement inputCreateNew;
 
+    @FindBy(xpath = "//a[@class='account']")
+    WebElement inputInfoUserLogged;
+
     public void enterInputSignIn(){
         waitUntilElementToBeVisible(By.xpath("//div[@class='user-info']//a"));
         inputSignIn.click();
@@ -28,5 +31,9 @@ public class MyStorePage extends BaseSeleniumTest {
     public void enterInputCreateNewAccount(){
      waitUntilElementToBeVisible(By.xpath("//div[@class='no-account']/a"));
      inputCreateNew.click();
+    }
+    public String verificationLoggedUsers(){
+        waitUntilElementToBeVisible(By.xpath("//a[@class='account']"));
+       return inputInfoUserLogged.getAttribute("title");
     }
 }
