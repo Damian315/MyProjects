@@ -44,16 +44,16 @@ public class CreateAccountPage extends BaseSeleniumTest {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement buttonSave;
 
-    public void completedForm(){
+    public void completedForm(String name, String surname, String password, String birthdate){
         waitUntilElementToBeVisible(By.xpath("//input[@id='field-id_gender-1']"));
         inputGender.click();
-        inputFirstName.sendKeys("Jan");
-        inputLastName.sendKeys("Kowalski");
+        inputFirstName.sendKeys(name);
+        inputLastName.sendKeys(surname);
         Random number = new Random();
         int random = number.nextInt(101);
         inputEmail.sendKeys("test" + random + "@wp.pl");
-        inputPassword.sendKeys("passpass");
-        inputBirthdate.sendKeys("01/04/1990");
+        inputPassword.sendKeys(password);
+        inputBirthdate.sendKeys(birthdate);
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(0,250)");
         inputPrivacyPolicy.click();
