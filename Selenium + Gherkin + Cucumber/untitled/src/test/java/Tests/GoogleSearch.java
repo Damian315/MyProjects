@@ -29,7 +29,7 @@ public class GoogleSearch extends BaseSeleniumTest {
     public void theFirstOneShouldContainsKeyword(){
         Assert.assertEquals("Korn", googlePage.getSearchingInformationHeading());
     }
-    @And("close browser")
+    @And("^close browser&")
     public void closeBrowser(){
         tearDown();
     }

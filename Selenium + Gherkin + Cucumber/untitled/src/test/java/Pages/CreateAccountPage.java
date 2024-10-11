@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -54,7 +53,7 @@ public class CreateAccountPage extends BaseSeleniumTest {
         int random = number.nextInt(101);
         inputEmail.sendKeys("test" + random + "@wp.pl");
         inputPassword.sendKeys("passpass");
-        inputBirthdate.sendKeys("05/31/1990");
+        inputBirthdate.sendKeys("01/04/1990");
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(0,250)");
         inputPrivacyPolicy.click();

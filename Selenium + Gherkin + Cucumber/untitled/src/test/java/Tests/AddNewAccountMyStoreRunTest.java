@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/Cucumber/Features",
         plugin = {"pretty", "html:out"},
-        tags = "@CreateNewAccountMyStore"
+        tags = "@CreateNewUser"
 )
 
 public class AddNewAccountMyStoreRunTest {

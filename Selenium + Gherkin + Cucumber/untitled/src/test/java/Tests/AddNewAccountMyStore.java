@@ -14,27 +14,27 @@ public class AddNewAccountMyStore extends BaseSeleniumTest {
     MyStorePage myStorePage;
     CreateAccountPage createAccountPage;
 
-    @Given("an open browser with my-store-testlab, and click sign up")
-    public void myStorePage(){
+    @Given("an open browser with my-store-testlab")
+    public void openMyStorePage(){
         setUp();
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
+        myStorePage = new MyStorePage(driver);
     }
 
-    @When("user goes to create new account")
-    public void goToCreateNewAccountPage(){
-        myStorePage = new MyStorePage(driver);
+    @When("user signUp and goes to create new account")
+    public void userSignUpAndGoesToCreateNewAccount(){
+        createAccountPage = new CreateAccountPage(driver);
         myStorePage.enterInputSignIn();
         myStorePage.enterInputCreateNewAccount();
     }
 
     @And("user completes form")
-    public void userCompletedForm(){
-        createAccountPage = new CreateAccountPage(driver);
+    public void userCompletesForm(){
         createAccountPage.completedForm();
     }
 
     @And("user save new account")
-    public void saveNewAccount(){
+    public void userSaveNewAccount(){
         createAccountPage.saveNewAccount();
     }
 
