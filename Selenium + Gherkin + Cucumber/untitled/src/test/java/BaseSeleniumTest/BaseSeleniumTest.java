@@ -18,7 +18,7 @@ import java.util.function.Function;
 
 public abstract class BaseSeleniumTest {
 
-    protected WebDriver driver;
+    public static WebDriver driver;
     protected Map<String, Object> vars;
     JavascriptExecutor js;
 
