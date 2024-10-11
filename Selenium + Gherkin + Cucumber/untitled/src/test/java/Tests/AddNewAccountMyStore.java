@@ -14,31 +14,31 @@ public class AddNewAccountMyStore extends BaseSeleniumTest {
     MyStorePage myStorePage;
     CreateAccountPage createAccountPage;
 
-    @Given("an open browser with my-store-testlab, and sign up")
+    @Given("an open browser with my-store-testlab, and click sign up")
     public void myStorePage(){
         setUp();
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
     }
 
-    @When("User goes to create new account")
+    @When("user goes to create new account")
     public void goToCreateNewAccountPage(){
         myStorePage = new MyStorePage(driver);
         myStorePage.enterInputSignIn();
         myStorePage.enterInputCreateNewAccount();
     }
 
-    @And("User completes form")
+    @And("user completes form")
     public void userCompletedForm(){
         createAccountPage = new CreateAccountPage(driver);
         createAccountPage.completedForm();
     }
 
-    @And("User save new account")
+    @And("user save new account")
     public void saveNewAccount(){
         createAccountPage.saveNewAccount();
     }
 
-    @Then("Enter save sees logged user")
+    @Then("enter save sees logged user")
     public void verificationNewUserLogged(){
         Assert.assertEquals("View my customer account", myStorePage.verificationLoggedUsers());
     }
