@@ -28,7 +28,7 @@ public class CheckValidation extends BaseSeleniumTest {
 
     @And("user completes form without birthdate")
     public void userCompletesFormWithoutBirthdate(){
-        //createAccountPage.completedForm("Jan", "Kowalski", "passpass", " ");
+        createAccountPage.completedForm("Jan", "Kowalski", "passpass", " ", " ");
     }
 
     @And("user click save button")
