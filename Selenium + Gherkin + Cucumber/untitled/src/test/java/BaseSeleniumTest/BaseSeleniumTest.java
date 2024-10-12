@@ -1,5 +1,6 @@
 package BaseSeleniumTest;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -24,12 +25,10 @@ public abstract class BaseSeleniumTest {
 
     @Before
     public void setUp(){
-        String driverPath = "src/main/resources/executables/drivers/chromedriver";
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/executables/drivers/chromedriver");
-        System.setProperty("webdriver.chrome.driver", driverPath);
+        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
+        options.addArguments("--remote-allow-origins=*");
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
         driver.manage().window().maximize();
