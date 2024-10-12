@@ -1,6 +1,7 @@
 package BaseSeleniumTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import net.andreinc.mockneat.MockNeat;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -58,5 +59,10 @@ public abstract class BaseSeleniumTest {
                 }
             }
         });
+    }
+
+    public String generateUniqueEmailAddress(){
+        MockNeat mock = MockNeat.threadLocal();
+        return mock.emails().domain("gmail.com").val();
     }
 }

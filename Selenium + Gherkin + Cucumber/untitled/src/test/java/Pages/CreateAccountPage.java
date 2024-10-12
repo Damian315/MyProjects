@@ -8,8 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Random;
-
 public class CreateAccountPage extends BaseSeleniumTest {
 
     public CreateAccountPage(WebDriver driver){
@@ -44,14 +42,12 @@ public class CreateAccountPage extends BaseSeleniumTest {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement buttonSave;
 
-    public void completedForm(String name, String surname, String password, String birthdate){
+    public void completedForm(String name, String surname, String password,String email,  String birthdate){
         waitUntilElementToBeVisible(By.xpath("//input[@id='field-id_gender-1']"));
         inputGender.click();
         inputFirstName.sendKeys(name);
         inputLastName.sendKeys(surname);
-        Random number = new Random();
-        int random = number.nextInt(101);
-        inputEmail.sendKeys("test" + random + "@wp.pl");
+        inputEmail.sendKeys(email);
         inputPassword.sendKeys(password);
         inputBirthdate.sendKeys(birthdate);
         JavascriptExecutor js = (JavascriptExecutor)driver;

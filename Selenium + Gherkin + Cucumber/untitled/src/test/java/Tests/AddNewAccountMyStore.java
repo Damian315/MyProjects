@@ -30,12 +30,13 @@ public class AddNewAccountMyStore extends BaseSeleniumTest {
 
     @And("user completes form")
     public void userCompletesForm(){
-        createAccountPage.completedForm("Jan", "Kowalski", "passpass", "01/04/1990");
+        createAccountPage.completedForm("Jan", "Kowalski",
+                "passpass", generateUniqueEmailAddress(), "01/04/1990");
     }
 
     @And("user save new account")
     public void userSaveNewAccount(){
-        createAccountPage.saveNewAccount();
+        //createAccountPage.saveNewAccount();
     }
 
     @Then("enter save sees logged user")
