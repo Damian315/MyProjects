@@ -3,10 +3,10 @@ package Pages;
 import BaseSeleniumTest.BaseSeleniumTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 
 public class CreateAccountAndPersonalInformationPage extends BaseSeleniumTest {
 
@@ -15,7 +15,7 @@ public class CreateAccountAndPersonalInformationPage extends BaseSeleniumTest {
     }
 
     @FindBy(xpath = "//input[@id='field-id_gender-1']")
-    WebElement inputGender;
+    WebElement inputGenderMale;
 
     @FindBy(xpath = "//input[@id='field-firstname']")
     WebElement inputFirstName;
@@ -56,9 +56,12 @@ public class CreateAccountAndPersonalInformationPage extends BaseSeleniumTest {
     @FindBy(xpath = "//article[@class='alert alert-success']")
     WebElement informationMessage;
 
+    @FindBy(xpath = "//span[@class='custom-radio']//input")
+    WebElement checkboxGender;
+
     public void completedForm(String name, String surname, String password, String email,  String birthdate){
         waitUntilElementToBeVisible(By.xpath("//input[@id='field-id_gender-1']"));
-        inputGender.click();
+        inputGenderMale.click();
         inputFirstName.sendKeys(name);
         inputLastName.sendKeys(surname);
         inputEmail.sendKeys(email);
@@ -83,7 +86,11 @@ public class CreateAccountAndPersonalInformationPage extends BaseSeleniumTest {
     }
 
     public void changeGenderBirthdateAndAddNewsletter(String birthdate){
-        inputGenderFemale.click();
+        if(inputGenderMale.getAttribute("checked") == null){
+            inputGenderMale.click();
+        }else {
+            inputGenderFemale.click();
+        }
         inputBirthdate.clear();
         inputBirthdate.sendKeys(birthdate);
         JavascriptExecutor js = (JavascriptExecutor)driver;
