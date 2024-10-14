@@ -42,7 +42,7 @@ public class CreateAccountPage extends BaseSeleniumTest {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement buttonSave;
 
-    public void completedForm(String name, String surname, String password,String email,  String birthdate){
+    public void completedForm(String name, String surname, String password, String email,  String birthdate){
         waitUntilElementToBeVisible(By.xpath("//input[@id='field-id_gender-1']"));
         inputGender.click();
         inputFirstName.sendKeys(name);
