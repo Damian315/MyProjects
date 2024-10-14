@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/Cucumber/Features",
         plugin = {"pretty", "html:out"},
-        tags = "@CreateNewUser"
+        tags = "@CreateNewUser or @CheckValidation"
 )
 
-public class AddNewAccountMyStoreRunTest {
+public class CreateAccountRunTest {
 
 }

@@ -36,10 +36,10 @@ public class AddNewAccountMyStore extends BaseSeleniumTest {
 
     @And("user save new account")
     public void userSaveNewAccount(){
-        //createAccountPage.saveNewAccount();
+        createAccountPage.saveNewAccount();
     }
 
-    @Then("enter save user sees logged account")
+    @Then("user has logged in MyStore")
     public void verificationNewUserLogged(){
         Assert.assertEquals("View my customer account", myStorePage.verificationLoggedUsers());
     }

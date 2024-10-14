@@ -9,13 +9,12 @@ Feature: Create new account MyStore
 
     And user completes form
     And user save new account
-    Then enter save user sees logged account
+    Then user has logged in MyStore
     And close browser
 
   @CheckValidation
   Scenario: Check validation page create new account
 
-    And user completes form without birthdate
-#    And user click save button
-#    Then user sees validation message
-#    And close browser
+    And user completes form with incorrect date email and birthdate
+    And user click save button
+    Then user sees validation message and close browser

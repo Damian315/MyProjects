@@ -42,6 +42,12 @@ public class CreateAccountPage extends BaseSeleniumTest {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement buttonSave;
 
+    @FindBy(xpath = "(//li[@class='alert alert-danger'])[1]")
+    WebElement validationMessageInputEmail;
+
+    @FindBy(xpath = "(//li[@class='alert alert-danger'])[2]")
+    WebElement validationMessageInputBirthdate;
+
     public void completedForm(String name, String surname, String password, String email,  String birthdate){
         waitUntilElementToBeVisible(By.xpath("//input[@id='field-id_gender-1']"));
         inputGender.click();
@@ -58,5 +64,13 @@ public class CreateAccountPage extends BaseSeleniumTest {
 
     public void saveNewAccount(){
         buttonSave.click();
+    }
+
+    public String[] validationEmail(){
+        waitUntilElementToBeVisible(By.xpath("(//li[@class='alert alert-danger'])[1]"));
+        String[] arrayMessage = new String[2];
+        arrayMessage[0] = validationMessageInputEmail.getText();
+        arrayMessage[1] = validationMessageInputBirthdate.getText();
+        return arrayMessage;
     }
 }

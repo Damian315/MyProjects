@@ -23,6 +23,7 @@ public class MyStorePage extends BaseSeleniumTest {
     @FindBy(xpath = "//a[@class='account']")
     WebElement inputInfoUserLogged;
 
+
     public void enterInputSignIn(){
         waitUntilElementToBeVisible(By.xpath("//div[@class='user-info']//a"));
         inputSignIn.click();
