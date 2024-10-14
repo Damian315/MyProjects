@@ -21,7 +21,7 @@ public class GoogleSearch extends BaseSeleniumTest {
 
     @When("a keyword Korn is entered in input field")
     public void enterKeyword(){
-        googlePage = new GooglePage(driver);
+        googlePage = new GooglePage();
         googlePage.enterTextareaSearchGoogle("Korn");
     }
 

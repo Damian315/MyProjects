@@ -1,7 +1,8 @@
 package Tests;
 
 import BaseSeleniumTest.BaseSeleniumTest;
-import Pages.CreateAccountPage;
+import Pages.CreateAccountAndPersonalInformationPage;
+import Pages.LoginPage;
 import Pages.MyStorePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -9,28 +10,31 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+
 public class CheckValidationCreateAccountPage extends BaseSeleniumTest {
 
     MyStorePage myStorePage;
-    CreateAccountPage createAccountPage;
+    CreateAccountAndPersonalInformationPage createAccountPage;
+    LoginPage loginPage;
 
     @Given("^an open browser with my-store$")
     public void openMyStore(){
         setUp();
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
-        myStorePage = new MyStorePage(driver);
 
     }
 
     @When("^user signUp and goes to page create new account$")
     public void userSignUpAndGoesToPageCreateNeAccount(){
+        myStorePage = new MyStorePage();
         myStorePage.enterInputSignIn();
-        myStorePage.enterInputCreateNewAccount();
+        loginPage = new LoginPage();
+        loginPage.enterInputCreateNewAccount();
     }
 
     @And("^user completes form with incorrect date email and birthdate$")
     public void userCompletesFormWithoutBirthdate(){
-        createAccountPage = new CreateAccountPage(driver);
+        createAccountPage = new CreateAccountAndPersonalInformationPage();
         createAccountPage.completedForm("Jan", "Kowalski",
                 "passpass", "test123@wp.pl", "01311999");
     }

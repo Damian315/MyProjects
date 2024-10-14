@@ -8,10 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CreateAccountPage extends BaseSeleniumTest {
+public class CreateAccountAndPersonalInformationPage extends BaseSeleniumTest {
 
-    public CreateAccountPage(WebDriver driver){
-        this.driver = driver;
+    public CreateAccountAndPersonalInformationPage(){
         PageFactory.initElements(driver, this);
     }
 
@@ -48,6 +47,15 @@ public class CreateAccountPage extends BaseSeleniumTest {
     @FindBy(xpath = "(//li[@class='alert alert-danger'])[2]")
     WebElement validationMessageInputBirthdate;
 
+    @FindBy(xpath = "//input[@id='field-id_gender-2']")
+    WebElement inputGenderFemale;
+
+    @FindBy(xpath = "//input[@name='newsletter']")
+    WebElement checkboxNewsletter;
+
+    @FindBy(xpath = "//article[@class='alert alert-success']")
+    WebElement informationMessage;
+
     public void completedForm(String name, String surname, String password, String email,  String birthdate){
         waitUntilElementToBeVisible(By.xpath("//input[@id='field-id_gender-1']"));
         inputGender.click();
@@ -72,5 +80,25 @@ public class CreateAccountPage extends BaseSeleniumTest {
         arrayMessage[0] = validationMessageInputEmail.getText();
         arrayMessage[1] = validationMessageInputBirthdate.getText();
         return arrayMessage;
+    }
+
+    public void changeGenderBirthdateAndAddNewsletter(String birthdate){
+        inputGenderFemale.click();
+        inputBirthdate.clear();
+        inputBirthdate.sendKeys(birthdate);
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy(0,250)");
+        inputPassword.sendKeys("passpass");
+        inputCustomerPrivacy.click();
+        inputPrivacyPolicy.click();
+        checkboxNewsletter.click();
+    }
+
+    public void enterButtonSave(){
+        buttonSave.click();
+    }
+
+    public String getMessageInformation(){
+        return informationMessage.getText();
     }
 }

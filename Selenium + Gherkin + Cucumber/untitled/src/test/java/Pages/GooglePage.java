@@ -7,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class GooglePage extends BaseSeleniumTest {
 
-    public GooglePage(WebDriver driver){
-        this.driver = driver;
+    public GooglePage(){
         PageFactory.initElements(driver, this);
     }
 

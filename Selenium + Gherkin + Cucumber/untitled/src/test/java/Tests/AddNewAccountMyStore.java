@@ -1,7 +1,8 @@
 package Tests;
 
 import BaseSeleniumTest.BaseSeleniumTest;
-import Pages.CreateAccountPage;
+import Pages.CreateAccountAndPersonalInformationPage;
+import Pages.LoginPage;
 import Pages.MyStorePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -12,31 +13,33 @@ import org.junit.Assert;
 public class AddNewAccountMyStore extends BaseSeleniumTest {
 
     MyStorePage myStorePage;
-    CreateAccountPage createAccountPage;
+    CreateAccountAndPersonalInformationPage createAccountPage;
+    LoginPage loginPage;
 
     @Given("an open browser with my-store-testlab")
     public void openMyStorePage(){
         setUp();
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
-        myStorePage = new MyStorePage(driver);
     }
 
     @When("user signUp and goes to create new account")
     public void userSignUpAndGoesToCreateNewAccount(){
-        createAccountPage = new CreateAccountPage(driver);
+        myStorePage = new MyStorePage();
         myStorePage.enterInputSignIn();
-        myStorePage.enterInputCreateNewAccount();
+        loginPage = new LoginPage();
+        loginPage.enterInputCreateNewAccount();
     }
 
     @And("user completes form")
     public void userCompletesForm(){
+        createAccountPage = new CreateAccountAndPersonalInformationPage();
         createAccountPage.completedForm("Jan", "Kowalski",
                 "passpass", generateUniqueEmailAddress(), "01/04/1990");
     }
 
     @And("user save new account")
     public void userSaveNewAccount(){
-        createAccountPage.saveNewAccount();
+        //createAccountPage.saveNewAccount();
     }
 
     @Then("user has logged in MyStore")

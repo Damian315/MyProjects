@@ -9,16 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MyStorePage extends BaseSeleniumTest {
 
-    public MyStorePage(WebDriver driver){
-        this.driver = driver;
+    public MyStorePage(){
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//div[@class='user-info']//a")
     WebElement inputSignIn;
-
-    @FindBy(xpath = "//div[@class='no-account']/a")
-    WebElement inputCreateNew;
 
     @FindBy(xpath = "//a[@class='account']")
     WebElement inputInfoUserLogged;
@@ -29,10 +25,6 @@ public class MyStorePage extends BaseSeleniumTest {
         inputSignIn.click();
     }
 
-    public void enterInputCreateNewAccount(){
-     waitUntilElementToBeVisible(By.xpath("//div[@class='no-account']/a"));
-     inputCreateNew.click();
-    }
     public String verificationLoggedUsers(){
         waitUntilElementToBeVisible(By.xpath("//a[@class='account']"));
        return inputInfoUserLogged.getAttribute("title");
