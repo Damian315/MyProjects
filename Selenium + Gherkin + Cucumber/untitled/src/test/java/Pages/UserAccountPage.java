@@ -16,8 +16,17 @@ public class UserAccountPage extends BaseSeleniumTest {
     @FindBy(xpath = "//a[@id='identity-link']")
     WebElement userInformationLink;
 
+    @FindBy(xpath = "//a[@id='addresses-link']")
+    WebElement userAddNewAddress;
+
     public void enterUserInformation(){
         waitUntilElementToBeVisible(By.xpath("//a[@id='identity-link']"));
         userInformationLink.click();
     }
+
+    public void enterAddress(){
+        waitUntilElementToBeVisible(By.xpath("//a[@id='addresses-link']"));
+        userAddNewAddress.click();
+    }
+
 }
