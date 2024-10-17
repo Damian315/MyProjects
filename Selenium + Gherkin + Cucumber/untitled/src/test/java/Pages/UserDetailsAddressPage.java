@@ -5,7 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,6 +50,15 @@ public class UserDetailsAddressPage extends BaseSeleniumTest {
         List<String> result = Arrays.stream(splitOneLine).collect(Collectors.toList());
         System.out.println("String array value " + result);
         return result;
+    }
+
+    public void checkDeletedData(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(6000));
+        if (wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("(//address)[2]")))){
+            System.out.println("Data has deleted");
+        }else {
+            System.out.println("Data has not deleted");
+        }
     }
 
 }

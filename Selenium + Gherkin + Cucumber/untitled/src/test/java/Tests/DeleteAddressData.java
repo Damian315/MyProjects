@@ -19,5 +19,7 @@ public class DeleteAddressData extends BaseSeleniumTest {
     @Then("^displays information message: Address successfully deleted!$")
     public void checkDeletedDataAndInformationMessage(){
         Assert.assertEquals("Address successfully deleted!", userDetailsAddressPage.getInformationMessageAddDate());
+        userDetailsAddressPage.checkDeletedData();
+        tearDown();
     }
 }
