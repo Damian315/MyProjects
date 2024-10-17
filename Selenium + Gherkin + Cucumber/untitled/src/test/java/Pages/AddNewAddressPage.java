@@ -1,13 +1,13 @@
 package Pages;
 
 import BaseSeleniumTest.BaseSeleniumTest;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class AddNewAddressPage extends BaseSeleniumTest {
@@ -43,7 +43,7 @@ public class AddNewAddressPage extends BaseSeleniumTest {
     @FindBy(xpath = "//article[@class='alert alert-success']//ul/li")
     WebElement messageInformation;
 
-    @FindBy(xpath = "//article[@class='address']")
+    @FindBy(xpath = "(//address)[2]")
     WebElement articleData;
 
     public void setDataNewAddress(String alias, String address, String city, String zipPostalCode, String phone) {
@@ -63,4 +63,13 @@ public class AddNewAddressPage extends BaseSeleniumTest {
     public String getInformationSuccessfullyAddDate() {
         return messageInformation.getText();
     }
+
+    public List<String> getSaveDataAddress(){
+        String[] splitOneLine = articleData.getText().split("\\R");
+        List<String> result = Arrays.stream(splitOneLine).collect(Collectors.toList());
+        System.out.println("String array value " + result);
+    return result;
+    }
+
+
 }

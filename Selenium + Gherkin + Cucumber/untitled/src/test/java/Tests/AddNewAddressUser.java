@@ -3,6 +3,7 @@ package Tests;
 import BaseSeleniumTest.BaseSeleniumTest;
 import Pages.*;
 import io.cucumber.java.an.Y;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -47,6 +48,13 @@ public class AddNewAddressUser extends BaseSeleniumTest {
     @Then("displays information successfully add address data and close browser")
     public void checkoutSaveDataAndInformationMessage(){
         Assert.assertEquals("Address successfully added!", addNewAddressPage.getInformationSuccessfullyAddDate());
+        Assert.assertEquals("Jan Kowalski", addNewAddressPage.getSaveDataAddress().get(0));
+        Assert.assertEquals("Anielin 10", addNewAddressPage.getSaveDataAddress().get(1));
+        Assert.assertEquals("Nowe Miasto", addNewAddressPage.getSaveDataAddress().get(2));
+        Assert.assertEquals("PO16 7GZ", addNewAddressPage.getSaveDataAddress().get(3));
+        Assert.assertEquals("United Kingdom", addNewAddressPage.getSaveDataAddress().get(4));
+        Assert.assertEquals("345678901", addNewAddressPage.getSaveDataAddress().get(5));
+        tearDown();
     }
 
 }
