@@ -3,7 +3,7 @@ package Tests;
 import BaseSeleniumTest.BaseSeleniumTest;
 import Pages.CreateAccountAndPersonalInformationPage;
 import Pages.LoginPage;
-import Pages.MyStorePage;
+import Pages.MyStoreHomePage;
 import Pages.UserAccountPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -13,7 +13,7 @@ import org.junit.Assert;
 
 public class UpdateUserInformationMyStore extends BaseSeleniumTest {
 
-    MyStorePage myStorePage;
+    MyStoreHomePage myStoreHomePage;
     LoginPage loginPage;
     UserAccountPage userAccountPage;
     CreateAccountAndPersonalInformationPage createAccountAndPersonalInformationPage;
@@ -22,8 +22,8 @@ public class UpdateUserInformationMyStore extends BaseSeleniumTest {
     public void userLoginInToMyStore(){
         setUp();
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
-        myStorePage = new MyStorePage();
-        myStorePage.enterInputSignIn();
+        myStoreHomePage = new MyStoreHomePage();
+        myStoreHomePage.enterInputSignIn();
         loginPage = new LoginPage();
         loginPage.userSignIn("test123@wp.pl", "passpass");
     }

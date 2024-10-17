@@ -3,7 +3,7 @@ package Tests;
 import BaseSeleniumTest.BaseSeleniumTest;
 import Pages.CreateAccountAndPersonalInformationPage;
 import Pages.LoginPage;
-import Pages.MyStorePage;
+import Pages.MyStoreHomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,7 +12,7 @@ import org.junit.Assert;
 
 public class AddNewAccountMyStore extends BaseSeleniumTest {
 
-    MyStorePage myStorePage;
+    MyStoreHomePage myStoreHomePage;
     CreateAccountAndPersonalInformationPage createAccountPage;
     LoginPage loginPage;
 
@@ -24,8 +24,8 @@ public class AddNewAccountMyStore extends BaseSeleniumTest {
 
     @When("user signUp and goes to create new account")
     public void userSignUpAndGoesToCreateNewAccount(){
-        myStorePage = new MyStorePage();
-        myStorePage.enterInputSignIn();
+        myStoreHomePage = new MyStoreHomePage();
+        myStoreHomePage.enterInputSignIn();
         loginPage = new LoginPage();
         loginPage.enterInputCreateNewAccount();
     }
@@ -39,12 +39,12 @@ public class AddNewAccountMyStore extends BaseSeleniumTest {
 
     @And("user save new account")
     public void userSaveNewAccount(){
-        //createAccountPage.saveNewAccount();
+        createAccountPage.saveNewAccount();
     }
 
     @Then("user has logged in MyStore")
     public void verificationNewUserLogged(){
-        Assert.assertEquals("View my customer account", myStorePage.verificationLoggedUsers());
+        Assert.assertEquals("View my customer account", myStoreHomePage.verificationLoggedUsers());
     }
 
     @And("close browser")

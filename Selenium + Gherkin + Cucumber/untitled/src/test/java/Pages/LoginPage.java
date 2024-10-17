@@ -24,6 +24,9 @@ public LoginPage(){
     @FindBy(xpath = "//button[@id='submit-login']")
     WebElement buttonSignIn;
 
+    @FindBy(xpath = "//div[@id='_desktop_logo']//a")
+    WebElement logoMyStore;
+
     public void enterInputCreateNewAccount(){
         waitUntilElementToBeVisible(By.xpath("//div[@class='no-account']/a"));
         inputCreateNew.click();
@@ -34,6 +37,10 @@ public LoginPage(){
         inputEmail.sendKeys(email);
         inputPassword.sendKeys(password);
         buttonSignIn.click();
+    }
+
+    public void goToHomePage(){
+        logoMyStore.click();
     }
 
 }

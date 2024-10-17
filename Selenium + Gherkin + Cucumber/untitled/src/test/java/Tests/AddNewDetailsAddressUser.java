@@ -11,7 +11,7 @@ import org.junit.Assert;
 
 public class AddNewDetailsAddressUser extends BaseSeleniumTest {
 
-    MyStorePage myStorePage;
+    MyStoreHomePage myStoreHomePage;
     LoginPage loginPage;
     UserAccountPage userAccountPage;
     AddNewAddressPage addNewAddressPage;
@@ -21,8 +21,8 @@ public class AddNewDetailsAddressUser extends BaseSeleniumTest {
     public void userOpenBrowserAndGoToLoginPage(){
         setUp();
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
-        myStorePage = new MyStorePage();
-        myStorePage.enterInputSignIn();
+        myStoreHomePage = new MyStoreHomePage();
+        myStoreHomePage.enterInputSignIn();
         loginPage = new LoginPage();
         loginPage.userSignIn("test123@wp.pl", "passpass");
         userAccountPage = new UserAccountPage();
