@@ -2,8 +2,6 @@ package Tests;
 
 import BaseSeleniumTest.BaseSeleniumTest;
 import Pages.*;
-import io.cucumber.java.an.Y;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,13 +9,13 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 
-public class AddNewAddressUser extends BaseSeleniumTest {
+public class AddNewDetailsAddressUser extends BaseSeleniumTest {
 
     MyStorePage myStorePage;
     LoginPage loginPage;
     UserAccountPage userAccountPage;
     AddNewAddressPage addNewAddressPage;
-    YourAddressPage yourAddressPage;
+    UserDetailsAddressPage userDetailsAddressPage;
 
     @Given("^an open browser with MySore, signUp and goes to new address$")
     public void userOpenBrowserAndGoToLoginPage(){
@@ -29,13 +27,13 @@ public class AddNewAddressUser extends BaseSeleniumTest {
         loginPage.userSignIn("test123@wp.pl", "passpass");
         userAccountPage = new UserAccountPage();
         userAccountPage.enterAddress();
-        yourAddressPage = new YourAddressPage();
-        yourAddressPage.enterAddNewAddress();
     }
 
     @When("^user completes form new address \"(.*)\", \"(.*)\", \"(.*)\", \"(.*)\", \"(.*)\"$")
     public void userSignUpAndGoesToAddNewAddress(String alias, String address, String city,
                                                  String zipPostalCode, String phone){
+        userDetailsAddressPage = new UserDetailsAddressPage();
+        userDetailsAddressPage.enterAddNewAddress();
         addNewAddressPage = new AddNewAddressPage();
         addNewAddressPage.setDataNewAddress(alias, address, city, zipPostalCode, phone);
     }
@@ -47,13 +45,13 @@ public class AddNewAddressUser extends BaseSeleniumTest {
 
     @Then("displays information successfully add address data and close browser")
     public void checkoutSaveDataAndInformationMessage(){
-        Assert.assertEquals("Address successfully added!", addNewAddressPage.getInformationSuccessfullyAddDate());
-        Assert.assertEquals("Jan Kowalski", addNewAddressPage.getSaveDataAddress().get(0));
-        Assert.assertEquals("Anielin 10", addNewAddressPage.getSaveDataAddress().get(1));
-        Assert.assertEquals("Nowe Miasto", addNewAddressPage.getSaveDataAddress().get(2));
-        Assert.assertEquals("PO16 7GZ", addNewAddressPage.getSaveDataAddress().get(3));
-        Assert.assertEquals("United Kingdom", addNewAddressPage.getSaveDataAddress().get(4));
-        Assert.assertEquals("345678901", addNewAddressPage.getSaveDataAddress().get(5));
+        Assert.assertEquals("Address successfully added!", userDetailsAddressPage.getInformationMessageAddDate());
+        Assert.assertEquals("Jan Kowalski", userDetailsAddressPage.getSaveDataAddress().get(0));
+        Assert.assertEquals("Anielin 10", userDetailsAddressPage.getSaveDataAddress().get(1));
+        Assert.assertEquals("Nowe Miasto", userDetailsAddressPage.getSaveDataAddress().get(2));
+        Assert.assertEquals("PO16 7GZ", userDetailsAddressPage.getSaveDataAddress().get(3));
+        Assert.assertEquals("United Kingdom", userDetailsAddressPage.getSaveDataAddress().get(4));
+        Assert.assertEquals("345678901", userDetailsAddressPage.getSaveDataAddress().get(5));
         tearDown();
     }
 

@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/Cucumber/Features",
         plugin = {"pretty", "html:out"},
-        tags = "@CreateNewAddress"
+        tags = "@CreateNewAddress or @DeleteDataAddress"
 )
 
-public class AddNewAddressUserTestRun {
+public class AddAndDeleteDetailsAddressUserTestRun {
 
 }

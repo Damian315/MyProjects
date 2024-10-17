@@ -40,12 +40,6 @@ public class AddNewAddressPage extends BaseSeleniumTest {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement buttonSave;
 
-    @FindBy(xpath = "//article[@class='alert alert-success']//ul/li")
-    WebElement messageInformation;
-
-    @FindBy(xpath = "(//address)[2]")
-    WebElement articleData;
-
     public void setDataNewAddress(String alias, String address, String city, String zipPostalCode, String phone) {
         inputAlias.sendKeys(alias);
         inputAddress.sendKeys(address);
@@ -59,17 +53,5 @@ public class AddNewAddressPage extends BaseSeleniumTest {
     public void enterButtonSave() {
         buttonSave.click();
     }
-
-    public String getInformationSuccessfullyAddDate() {
-        return messageInformation.getText();
-    }
-
-    public List<String> getSaveDataAddress(){
-        String[] splitOneLine = articleData.getText().split("\\R");
-        List<String> result = Arrays.stream(splitOneLine).collect(Collectors.toList());
-        System.out.println("String array value " + result);
-    return result;
-    }
-
 
 }
