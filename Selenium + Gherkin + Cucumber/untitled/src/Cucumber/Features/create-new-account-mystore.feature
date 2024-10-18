@@ -1,16 +1,19 @@
 Feature: Create new account MyStore
 
   Background:
-    Given an open browser with my-store-testlab
-    When user signUp and goes to create new account
+    Given an open browser and signUp
 
   @CreateNewUser
-  Scenario: Add new user to MyStore-testlab
+  Scenario Outline: Add new user to MyStore-testlab
 
-    And user completes form
+    When user completes form sets "<name>", "<surname>", "<password>", "<birthdate>"
     And user save new account
     Then user has logged in MyStore
     And close browser
+
+    Examples:
+    | name | surname   | password | birthdate  |
+    | Jan  | Kowalski  | passpass | 01/04/1990 |
 
   @CheckValidation
   Scenario: Check validation page create new account
