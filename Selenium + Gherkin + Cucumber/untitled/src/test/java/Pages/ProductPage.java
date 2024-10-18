@@ -21,12 +21,12 @@ public class ProductPage extends BaseSeleniumTest {
 
     public String getChosenProductFromListAndCalculateDiscount(){
         waitUntilElementToBeVisible(By.xpath("//div[@class='product-discount']//span"));
-        double percentValue = Double.parseDouble(productDiscountValue.getText().substring(1, 3));
+        double percentValue = Double.parseDouble(productDiscountValue.getText().substring(1, productDiscountValue.getText().length() - 1));
         double valueProduct = Double.parseDouble(productRegularPrice.getText().substring(1));
         double percent = percentValue/ 100;
-        double rabatvalue = valueProduct * percent;
-        Math.round(rabatvalue);
-        double discountedValue = valueProduct - rabatvalue;
+        double rabatValue = valueProduct * percent;
+        Math.round(rabatValue);
+        double discountedValue = valueProduct - rabatValue;
         return String.valueOf(discountedValue);
     }
 }
