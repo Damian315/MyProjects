@@ -27,7 +27,8 @@ public class GoogleSearch extends BaseSeleniumTest {
 
     @Then("the first one should contain Korn")
     public void theFirstOneShouldContainsKeyword(){
-        Assert.assertEquals("Korn", googlePage.getSearchingInformationHeading());
+        Assert.assertEquals("Zespół muzyczny", googlePage.getSearchingInformationSubtitle());
+
     }
     @And("^close browser&")
     public void closeBrowser(){

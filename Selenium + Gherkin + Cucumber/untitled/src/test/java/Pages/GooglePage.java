@@ -11,14 +11,14 @@ public class GooglePage extends BaseSeleniumTest {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//textarea[@name='q']")
+    @FindBy(name = "q")
     WebElement textarea;
 
     @FindBy(xpath = "(//button//div[@role='none'])[4]")
     WebElement buttonCookieAcceptance;
 
-    @FindBy(xpath = "//div[@data-attrid='title']")
-    WebElement headingInformation;
+    @FindBy(xpath = "//div[@data-attrid= 'subtitle']//span")
+    WebElement subtitleInformation;
 
     public void enterTextareaSearchGoogle(String text){
         JavascriptExecutor executor = (JavascriptExecutor)driver;
@@ -29,8 +29,8 @@ public class GooglePage extends BaseSeleniumTest {
         textarea.sendKeys(Keys.ENTER);
     }
 
-    public String getSearchingInformationHeading(){
-        return headingInformation.getText();
+    public String getSearchingInformationSubtitle(){
+        return subtitleInformation.getText();
     }
 
 }
