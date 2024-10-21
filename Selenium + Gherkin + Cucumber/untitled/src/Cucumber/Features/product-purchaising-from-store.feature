@@ -5,10 +5,13 @@ Feature: Product purchasing from a store
 
     Given an open browser with MyStore, signUp, choose product and check rabat
     When user choose product size "<size>" and quantity "<quantity>"
+    And user adds product to the cart and goes to checkout
+    And user confirm address, delivery option and payments type
+    And user enter button place order
+    Then user sees confirmed order, check quantity "<quantity>", order history and close browser
 
     Examples:
     | size | quantity |
-    | S    | 4         |
-#    | M    | 2        |
+    | M    | 4         |
 #    | L    | 3        |
 #    | XL   | 4        |

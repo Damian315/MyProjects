@@ -4,10 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import net.andreinc.mockneat.MockNeat;
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -43,7 +40,7 @@ public abstract class BaseSeleniumTest {
     public void waitUntilElementToBeVisible(By locator){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(6000));
         wait.withTimeout(Duration.ofSeconds(200))
-                .pollingEvery(Duration.ofMillis(10000))
+                .pollingEvery(Duration.ofMillis(8000))
                 .ignoring(NoSuchFieldException.class);
         wait.until(new Function<WebDriver, Boolean>() {
             @Override

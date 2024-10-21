@@ -1,19 +1,24 @@
 package Tests;
 
 import BaseSeleniumTest.BaseSeleniumTest;
-import Pages.LoginPage;
-import Pages.MyStoreHomePage;
-import Pages.ProductPage;
+import Helpers.SeleniumHelper;
+import Pages.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.TakesScreenshot;
+
+import java.io.IOException;
 
 public class ProductPurchasing extends BaseSeleniumTest {
 
     MyStoreHomePage myStoreHomePage;
     LoginPage loginPage;
     ProductPage productPage;
+    OrderPage orderPage;
+    ConfirmedOrderPage confirmedOrderPage;
 
     @Given("^an open browser with MyStore, signUp, choose product and check rabat$")
     public void userSignUpChooseProductAndCheckRabat(){
@@ -35,5 +40,32 @@ public class ProductPurchasing extends BaseSeleniumTest {
     @When("^user choose product size \"(.*)\" and quantity \"(.*)\"$")
     public void userChooseProductSizeAndQuantity(String size, String quantity){
         productPage.getSizeAndQuantity(size, quantity);
+    }
+
+    @And("^user adds product to the cart and goes to checkout$")
+    public void userAddToCartProduct(){
+        productPage.enterButtonAddCartAndProceedToCheckout();
+    }
+
+    @And("^user confirm address, delivery option and payments type$")
+    public void userConfirmDataAddressDeliveryAndPaymentType(){
+        orderPage = new OrderPage();
+        orderPage.enterButtonConfirmAddressDeliveryOption();
+        orderPage.enterCheckboxPayByCheck();
+        orderPage.enterTermsOfService();
+    }
+
+    @And("^user enter button place order$")
+    public void userPlaceOrder(){
+        orderPage.enterButtonPlaceOrder();
+    }
+
+    @Then("^user sees confirmed order, check quantity \"(.*)\", order history and close browser$")
+    public void userSeesDataConfirmedOrderAndCheckOrderHistory(String quantity) throws IOException {
+        confirmedOrderPage = new ConfirmedOrderPage();
+        SeleniumHelper.takeScreenShot(driver);
+        Assert.assertEquals("YOUR ORDER IS CONFIRMED", confirmedOrderPage.informationMessage());
+        Assert.assertEquals(quantity, confirmedOrderPage.orderItems().get(1));
+        tearDown();
     }
 }

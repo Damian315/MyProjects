@@ -1,13 +1,14 @@
 package Pages;
 
 import BaseSeleniumTest.BaseSeleniumTest;
-import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.swing.*;
+import javax.swing.text.Element;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,7 @@ public class ProductPage extends BaseSeleniumTest {
     public ProductPage() {
         PageFactory.initElements(driver, this);
     }
-
-    DataTable dataTable;
+    
 
     @FindBy(xpath = "//div[@class='product-discount']//span")
     WebElement productRegularPrice;
@@ -30,6 +30,15 @@ public class ProductPage extends BaseSeleniumTest {
 
     @FindBy(xpath = "//input[@id='quantity_wanted']")
     WebElement productQuantity;
+
+    @FindBy(xpath = "//div[@class='add']//button")
+    WebElement buttonAddToCart;
+
+    @FindBy(xpath = "//div[@class='cart-content-btn']//a")
+    WebElement buttonProceedToCheckout;
+
+    @FindBy(xpath = "//div[@class='card cart-summary']//a")
+    WebElement buttonCheckoutOnProductCart;
 
 
     public String getChosenProductFromListAndCalculateDiscount() {
@@ -53,13 +62,24 @@ public class ProductPage extends BaseSeleniumTest {
             }
         }
         productQuantity.click();
-        productQuantity.sendKeys(Keys.BACK_SPACE);
+        String valueQuantity = productQuantity.getAttribute("value");
+        if (valueQuantity != null){
+            for (int i = 0; i <= valueQuantity.length(); i++){
+                productQuantity.sendKeys(Keys.BACK_SPACE);
+            }
+        }
         productQuantity.sendKeys(quantity);
 
-
-
-
-
     }
+
+    public void enterButtonAddCartAndProceedToCheckout(){
+        waitUntilElementToBeVisible(By.xpath("//div[@class='add']//button"));
+        buttonAddToCart.click();
+        waitUntilElementToBeVisible(By.xpath("//div[@class='cart-content-btn']//a"));
+        buttonProceedToCheckout.click();
+        waitUntilElementToBeVisible(By.xpath("//div[@class='card cart-summary']//a"));
+        buttonCheckoutOnProductCart.click();
+    }
+
 }
 
