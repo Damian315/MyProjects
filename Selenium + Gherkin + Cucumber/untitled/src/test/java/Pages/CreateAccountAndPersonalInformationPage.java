@@ -14,28 +14,28 @@ public class CreateAccountAndPersonalInformationPage extends BaseSeleniumTest {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//input[@id='field-id_gender-1']")
+    @FindBy(id = "field-id_gender-1")
     WebElement inputGenderMale;
 
-    @FindBy(xpath = "//input[@id='field-firstname']")
+    @FindBy(id = "field-firstname")
     WebElement inputFirstName;
 
-    @FindBy(xpath = "//input[@id='field-lastname']")
+    @FindBy(id = "field-lastname")
     WebElement inputLastName;
 
-    @FindBy(xpath = "//input[@id='field-email']")
+    @FindBy(id = "field-email")
     WebElement inputEmail;
 
-    @FindBy(xpath = "//input[@id='field-password']")
+    @FindBy(id = "field-password")
     WebElement inputPassword;
 
-    @FindBy(xpath = "//input[@id='field-birthday']")
+    @FindBy(id = "field-birthday")
     WebElement inputBirthdate;
 
-    @FindBy(xpath = "//input[@name='psgdpr']")
+    @FindBy(name = "psgdpr")
     WebElement inputPrivacyPolicy;
 
-    @FindBy(xpath = "//input[@name='customer_privacy']")
+    @FindBy(name = "customer_privacy")
     WebElement inputCustomerPrivacy;
 
     @FindBy(xpath = "//button[@type='submit']")
@@ -47,17 +47,15 @@ public class CreateAccountAndPersonalInformationPage extends BaseSeleniumTest {
     @FindBy(xpath = "(//li[@class='alert alert-danger'])[2]")
     WebElement validationMessageInputBirthdate;
 
-    @FindBy(xpath = "//input[@id='field-id_gender-2']")
+    @FindBy(id = "field-id_gender-2")
     WebElement inputGenderFemale;
 
-    @FindBy(xpath = "//input[@name='newsletter']")
+    @FindBy(name = "newsletter")
     WebElement checkboxNewsletter;
 
     @FindBy(xpath = "//article[@class='alert alert-success']")
     WebElement informationMessage;
 
-    @FindBy(xpath = "//span[@class='custom-radio']//input")
-    WebElement checkboxGender;
 
     public void completedForm(String name, String surname, String password, String email,  String birthdate){
         waitUntilElementToBeVisible(By.xpath("//input[@id='field-id_gender-1']"));
