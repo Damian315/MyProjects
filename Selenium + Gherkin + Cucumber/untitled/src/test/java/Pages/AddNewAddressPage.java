@@ -5,10 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 public class AddNewAddressPage extends BaseSeleniumTest {
 
@@ -16,22 +12,22 @@ public class AddNewAddressPage extends BaseSeleniumTest {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//input[@id='field-alias']")
+    @FindBy(id = "field-alias")
     WebElement inputAlias;
 
-    @FindBy(xpath = "//input[@id='field-address1']")
+    @FindBy(id = "field-address1")
     WebElement inputAddress;
 
-    @FindBy(xpath = "//input[@id='field-city']")
+    @FindBy(id = "field-city")
     WebElement inputCity;
 
-    @FindBy(xpath = "//input[@id='field-postcode']")
+    @FindBy(id = "field-postcode")
     WebElement inputZipPostalCode;
 
-    @FindBy(xpath = "//input[@id='field-phone']")
+    @FindBy(id = "field-phone")
     WebElement inputPhone;
 
-    @FindBy(xpath = "//select[@id='field-id_country']")
+    @FindBy(id = "field-id_country")
     WebElement inputCountry;
 
     @FindBy(xpath = "//select[@id='field-id_country']/option[2]")
