@@ -18,26 +18,22 @@ public class UpdateUserInformationMyStore extends BaseSeleniumTest {
     UserAccountPage userAccountPage;
     CreateAccountAndPersonalInformationPage createAccountAndPersonalInformationPage;
 
-    @Given("^user is logged in to CodersLab shop$")
-    public void userLoginInToMyStore(){
+    @Given("^user signUp and goes to information account page$")
+    public void userSignUpAndGoesToInformationAccountPage(){
         setUp();
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
         myStoreHomePage = new MyStoreHomePage();
         myStoreHomePage.enterInputSignIn();
         loginPage = new LoginPage();
         loginPage.userSignIn("test123@wp.pl", "passpass");
-    }
-
-    @When("^user go to UserInformationPage$")
-    public void userGoTOUserInformationPage(){
         userAccountPage = new UserAccountPage();
         userAccountPage.enterUserInformation();
     }
 
-    @And("^user change date account$")
-    public void userChangeAccountPersonalInformation(){
+    @When("^user change account data$")
+    public void userChangeAccountData(){
         createAccountAndPersonalInformationPage = new CreateAccountAndPersonalInformationPage();
-        createAccountAndPersonalInformationPage.changeGenderBirthdateAndAddNewsletter("06/12/1990");
+        createAccountAndPersonalInformationPage.changeGenderBirthdateAndAddNewsletter();
     }
 
     @And("^user saves information$")

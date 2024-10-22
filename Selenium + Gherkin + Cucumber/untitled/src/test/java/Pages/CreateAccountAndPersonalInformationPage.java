@@ -7,6 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class CreateAccountAndPersonalInformationPage extends BaseSeleniumTest {
 
@@ -83,14 +87,16 @@ public class CreateAccountAndPersonalInformationPage extends BaseSeleniumTest {
         return arrayMessage;
     }
 
-    public void changeGenderBirthdateAndAddNewsletter(String birthdate){
+    public void changeGenderBirthdateAndAddNewsletter(){
         if(inputGenderMale.getAttribute("checked") == null){
             inputGenderMale.click();
         }else {
             inputGenderFemale.click();
         }
         inputBirthdate.clear();
-        inputBirthdate.sendKeys(birthdate);
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date date = new Date();
+        inputBirthdate.sendKeys(dateFormat.format(date));
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(0,250)");
         inputPassword.sendKeys("passpass");
