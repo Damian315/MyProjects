@@ -45,7 +45,7 @@ public class ProductPurchasing extends BaseSeleniumTest {
     }
 
     @And("^user adds product to the cart and goes to checkout$")
-    public void userAddToCartProduct(){
+    public void userAddToCartProductAndGoesToCheckout(){
         productPage.enterButtonAddCartAndProceedToCheckout();
     }
 
@@ -58,7 +58,7 @@ public class ProductPurchasing extends BaseSeleniumTest {
     }
 
     @And("^user enter button place order$")
-    public void userPlaceOrder(){
+    public void userClickButtonPlaceOrder(){
         orderPage.enterButtonPlaceOrder();
     }
 

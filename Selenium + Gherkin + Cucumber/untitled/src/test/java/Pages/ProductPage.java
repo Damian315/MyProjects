@@ -4,6 +4,7 @@ import BaseSeleniumTest.BaseSeleniumTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -65,7 +66,10 @@ public class ProductPage extends BaseSeleniumTest {
         String valueQuantity = productQuantity.getAttribute("value");
         if (valueQuantity != null){
             for (int i = 0; i <= valueQuantity.length(); i++){
-                productQuantity.sendKeys(Keys.BACK_SPACE);
+                Actions actions = new Actions(driver);
+                actions.click(productQuantity);
+                actions.sendKeys(productQuantity, Keys.CONTROL + "a");
+                actions.sendKeys(productQuantity, Keys.DELETE).build().perform();
             }
         }
         productQuantity.sendKeys(quantity);
