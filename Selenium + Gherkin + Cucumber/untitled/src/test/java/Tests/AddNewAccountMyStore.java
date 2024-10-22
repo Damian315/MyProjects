@@ -17,7 +17,7 @@ public class AddNewAccountMyStore extends BaseSeleniumTest {
     LoginPage loginPage;
 
     @Given("^an open browser and signUp$")
-    public void openMyStorePage(){
+    public void openAndSignUpMyStore(){
         setUp();
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
         myStoreHomePage = new MyStoreHomePage();
