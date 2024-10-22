@@ -48,5 +48,6 @@ public class UpdateUserInformationMyStore extends BaseSeleniumTest {
     @Then("^user sees message Information successfully updated and close browser$")
     public void userSeesMessageInformation(){
         Assert.assertEquals("Information successfully updated.", createAccountAndPersonalInformationPage.getMessageInformation());
+        tearDown();
     }
 }
