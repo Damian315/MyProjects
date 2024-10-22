@@ -18,7 +18,7 @@ public class AddNewDetailsAddressUser extends BaseSeleniumTest {
     UserDetailsAddressPage userDetailsAddressPage;
 
     @Given("^an open browser with MySore, signUp and goes to new address$")
-    public void userOpenBrowserAndGoToLoginPage(){
+    public void userOpenBrowserSignUpAndGoesToAddNewAddress(){
         setUp();
         driver.get("https://mystore-testlab.coderslab.pl/index.php");
         myStoreHomePage = new MyStoreHomePage();
@@ -30,7 +30,7 @@ public class AddNewDetailsAddressUser extends BaseSeleniumTest {
     }
 
     @When("^user completes form new address \"(.*)\", \"(.*)\", \"(.*)\", \"(.*)\", \"(.*)\"$")
-    public void userSignUpAndGoesToAddNewAddress(String alias, String address, String city,
+    public void userCompletesNewAddressForm(String alias, String address, String city,
                                                  String zipPostalCode, String phone){
         userDetailsAddressPage = new UserDetailsAddressPage();
         userDetailsAddressPage.enterAddNewAddress();
