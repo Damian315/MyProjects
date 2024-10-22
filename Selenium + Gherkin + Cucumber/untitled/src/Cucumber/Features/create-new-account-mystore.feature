@@ -16,8 +16,12 @@ Feature: Create new account MyStore
     | Jan  | Kowalski  | passpass | 01/04/1990 |
 
   @CheckValidation
-  Scenario: Check validation page create new account
+  Scenario Outline: Check validation page create new account
 
-    And user completes form with incorrect date email and birthdate
+    When user completes form sets "<name>", "<surname>", "<password>" with incorrect date email "<email>" and birthdate "<birthdate>"
     And user click save button
     Then user sees validation message and close browser
+
+    Examples:
+    | name | surname  | password | email         | birthdate |
+    | Jan  | Kowalski | passpass | test123@wp.pl | 01311999  |
