@@ -4,6 +4,7 @@ import BaseSeleniumTest.BaseSeleniumTest;
 import Pages.CreateAccountAndPersonalInformationPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 
@@ -11,11 +12,11 @@ public class CheckValidationCreateAccountPage extends BaseSeleniumTest {
 
     CreateAccountAndPersonalInformationPage createAccountPage;
 
-    @And("^user completes form with incorrect date email and birthdate$")
-    public void userCompletesFormWithoutBirthdate(){
+    @When("^user completes form sets \"(.*)\", \"(.*)\", \"(.*)\" with incorrect date email \"(.*)\" and birthdate \"(.*)\"$")
+    public void userCompletesFormIncorrectEmailAndBirthdate(String name, String surname, String password,
+                                                            String email, String birthdate){
         createAccountPage = new CreateAccountAndPersonalInformationPage();
-        createAccountPage.completedForm("Jan", "Kowalski",
-                "passpass", "test123@wp.pl", "01311999");
+        createAccountPage.completedForm(name, surname, password, email, birthdate);
     }
 
     @And("^user click save button$")
