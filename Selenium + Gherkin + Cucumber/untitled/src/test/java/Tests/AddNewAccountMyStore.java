@@ -27,7 +27,7 @@ public class AddNewAccountMyStore extends BaseSeleniumTest {
     }
 
     @When("^user completes form sets \"(.*)\", \"(.*)\", \"(.*)\", \"(.*)\"$")
-    public void userSignUpAndGoesToCreateNewAccount(String name, String surname, String password, String birthdate){
+    public void userCompletedFormAddingNewAccount(String name, String surname, String password, String birthdate){
         createAccountPage = new CreateAccountAndPersonalInformationPage();
         createAccountPage.completedForm(name, surname, password, generateUniqueEmailAddress(), birthdate);
     }
