@@ -36,4 +36,8 @@ public class MyStoreHomePage extends BaseSeleniumTest {
         productMiniatureList.click();
     }
 
+    public void enterUserAccount(){
+        inputInfoUserLogged.click();
+    }
+
 }

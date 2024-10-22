@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.apache.commons.lang3.StringUtils.substring;
 
 public class ConfirmedOrderPage extends BaseSeleniumTest {
 
@@ -23,8 +22,8 @@ public class ConfirmedOrderPage extends BaseSeleniumTest {
     @FindBy(xpath = "//div[@class='order-confirmation-table']/div/div[3]")
     WebElement orderItems;
 
-    @FindBy(xpath = "//div[@id='order-details']//ul/li[1]")
-    WebElement orderDetails;
+    @FindBy(xpath = "//li[@id='order-reference-value']")
+    WebElement orderReferenceValue;
 
     public String informationMessage(){
         String message = informationMessageOrder.getText().substring(1);
@@ -40,6 +39,8 @@ public class ConfirmedOrderPage extends BaseSeleniumTest {
         return elementsOrder;
     }
 
-
+    public String numberOrderReference(){
+        return orderReferenceValue.getText().substring(17);
+    }
 
 }

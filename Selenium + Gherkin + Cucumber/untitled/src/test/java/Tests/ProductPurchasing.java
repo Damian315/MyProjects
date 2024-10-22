@@ -19,6 +19,8 @@ public class ProductPurchasing extends BaseSeleniumTest {
     ProductPage productPage;
     OrderPage orderPage;
     ConfirmedOrderPage confirmedOrderPage;
+    UserAccountPage userAccountPage;
+    OrderHistoryPage orderHistoryPage;
 
     @Given("^an open browser with MyStore, signUp, choose product and check rabat$")
     public void userSignUpChooseProductAndCheckRabat(){
@@ -66,6 +68,15 @@ public class ProductPurchasing extends BaseSeleniumTest {
         SeleniumHelper.takeScreenShot(driver);
         Assert.assertEquals("YOUR ORDER IS CONFIRMED", confirmedOrderPage.informationMessage());
         Assert.assertEquals(quantity, confirmedOrderPage.orderItems().get(1));
+        String orderReference = confirmedOrderPage.numberOrderReference();
+        String totalPrice = confirmedOrderPage.orderItems().get(2);
+        myStoreHomePage.enterUserAccount();
+        userAccountPage = new UserAccountPage();
+        userAccountPage.enterUserOrderHistoryAndDetails();
+        orderHistoryPage = new OrderHistoryPage();
+        Assert.assertEquals(orderReference, orderHistoryPage.getOrderReferenceInHistory());
+        Assert.assertEquals("Awaiting check payment", orderHistoryPage.orderHistoryData().get(3));
+        Assert.assertEquals(totalPrice, orderHistoryPage.orderHistoryData().get(1));
         tearDown();
     }
 }
