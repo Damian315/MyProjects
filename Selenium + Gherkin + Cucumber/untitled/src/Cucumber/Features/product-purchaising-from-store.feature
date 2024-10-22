@@ -12,6 +12,6 @@ Feature: Product purchasing from a store
 
     Examples:
     | size | quantity |
-    | M    | 4         |
-#    | L    | 3        |
-#    | XL   | 4        |
+    | M    | 4        |
+    | L    | 3        |
+    | XL   | 5        |
