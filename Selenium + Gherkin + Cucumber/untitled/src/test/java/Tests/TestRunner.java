@@ -8,9 +8,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/Cucumber/Features",
-        plugin = {"pretty", "html:out"}
-        //tags = "@ProductPurchasing"
+        plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
+        //tags = "@GoogleSearch"
 )
 
-public class TestRunner {
+    public class TestRunner {
 }
