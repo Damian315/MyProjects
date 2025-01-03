@@ -1,7 +1,7 @@
 Feature: Create new account MyStore
 
   Background:
-    Given an open browser and signUp
+    Given open browser and signUp
 
   @CreateNewUser
   Scenario Outline: Add new user to MyStore-testlab
