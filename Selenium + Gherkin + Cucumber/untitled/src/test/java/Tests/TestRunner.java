@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/Cucumber/Features",
         plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
-        //tags = "@GoogleSearch"
+        //tags = "ProductPurchasing"
 )
 
     public class TestRunner {
